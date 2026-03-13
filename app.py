@@ -200,7 +200,7 @@ def handle_requests():
         # Get before likes count
         before = make_request(encrypted_uid, server_name, token)
         if before is None:
-            return jsonify({"error": "Failed to retrieve player info."}), 500
+            return jsonify({"error": "Failed to retrieve player info. There are no valid token found! please update tokens.json with valid tokens"}), 500
         
         data_before = json.loads(MessageToJson(before))
         before_like = int(data_before.get('AccountInfo', {}).get('Likes', 0) or 0)
